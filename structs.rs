@@ -27,6 +27,13 @@ struct Rectangle {
     bottom_right: Point,
 }
 
+fn rect_area (rect: Rectangle) -> f32 {
+    let Rectangle { top_left: Point { x: x1, y: y1 }, bottom_right: Point { x: x2, y: y2 } } = rect;
+    let width = x2 - x1;
+    let height = y2 - y1;
+    return width * height;
+}
+
 fn main() {
     // Create struct with field init shorthand
     let name = String::from("Peter");
@@ -72,4 +79,11 @@ fn main() {
     let Pair(integer, decimal) = pair;
 
     println!("pair contains {:?} and {:?}", integer, decimal);
+
+    let rect = Rectangle {
+        top_left: Point { x: 0.0, y: 0.0 },
+        bottom_right: Point { x: 10.0, y: 11.0 },
+    };
+
+    println!("The area of the rectangle is {}", rect_area(rect));
 }
